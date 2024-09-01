@@ -49,9 +49,9 @@ if (!$result) {
         <?php if ($result->num_rows > 0): ?>
             <?php while ($row = $result->fetch_assoc()): ?>
                 <li class="list-group-item mb-3 p-4"> <!-- Added margin-bottom and padding classes -->
-                    <h2 class="h5"><?php echo htmlspecialchars($row['title']); ?></h2>
-                    <p><?php echo htmlspecialchars($row['content']); ?></p>
-                    <p><small class="text-muted">Created at: <?php echo htmlspecialchars($row['created_at']); ?></small></p>
+                    <h2 class="h5"><strong class= "text-primary">Title: </strong> <?php echo htmlspecialchars($row['title']); ?></h2>
+                    <p><strong class= "text-primary">Content: </strong><?php echo htmlspecialchars($row['content']); ?></p>
+                    <p><small class="text-muted"><strong class= "text-primary">Created at: </strong> <?php echo htmlspecialchars($row['created_at']); ?></small></p>
                     <div class="btn-group" role="group">
                         <a href="edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
                         <a href="delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm">Delete</a>

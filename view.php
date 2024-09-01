@@ -31,14 +31,14 @@ if ($post_id > 0) {
 }
 ?>
 
-<div class="container mt-5">
+<div class="container m-5">
     <div class="card">
         <div class="card-header">
-            <h1 class="card-title"><?php echo htmlspecialchars($post['title']); ?></h1>
+            <h3 class="card-title"><strong class= "text-primary">Title: </strong> <?php echo htmlspecialchars($post['title']); ?></h3>
         </div>
         <div class="card-body">
-            <p class="card-text"><?php echo nl2br(htmlspecialchars($post['content'])); ?></p>
-            <p class="text-muted"><small>Created at: <?php echo htmlspecialchars($post['created_at']); ?></small></p>
+            <p class="card-text"><strong class= "text-primary">Content: </strong> <?php echo nl2br(htmlspecialchars($post['content'])); ?></p>
+            <p class="text-muted"><small><strong class= "text-primary">Created at: </strong> <?php echo htmlspecialchars($post['created_at']); ?></small></p>
             <a href="index.php" class="btn btn-primary">Back to Posts</a>
         </div>
     </div>
