@@ -12,24 +12,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("sss", $title, $content, $created_at);
 
     if ($stmt->execute()) {
-        echo "New post created successfully!";
+        echo "<div class='alert alert-success'>New post created successfully!</div>";
     } else {
-        echo "Error: " . $stmt->error;
+        echo "<div class='alert alert-danger'>Error: " . $stmt->error . "</div>";
     }
 
     $stmt->close();
 }
 ?>
 
-<h1>Create Post</h1>
-<form method="POST">
-    <label>Title:</label><br>
-    <input type="text" name="title" required><br><br>
-    <label>Content:</label><br>
-    <textarea name="content" required></textarea><br><br>
-    <label>Created At:</label><br>
-    <input type="datetime-local" name="created_at" required><br><br> <!-- Datetime input field -->
-    <input type="submit" value="Submit">
-</form>
-<a href="index.php">View Posts</a>
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0">Create Post</h5>
+        </div>
+        <div class="card-body">
+            <form method="POST">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title:</label>
+                    <input type="text" name="title" id="title" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="content" class="form-label">Content:</label>
+                    <textarea name="content" id="content" class="form-control" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="created_at" class="form-label">Created At:</label>
+                    <input type="datetime-local" name="created_at" id="created_at" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <a href="index.php" class="btn btn-link mt-3">View Posts</a>
+        </div>
+    </div>
+</div>
+
 <?php include('footer.php'); ?>
