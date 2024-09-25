@@ -13,6 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = $_POST['title'];
     $content = $_POST['content'];
     $created_at = $_POST['created_at'];
+    $user_id = $_SESSION['user_id']; // Get the logged-in user's ID
 
     // Server-side validation for minimum 6 words in content
     $word_count = str_word_count($content);
@@ -20,9 +21,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($word_count < 6) {
         echo "<div class='alert alert-danger'>Error: Content must contain at least 6 words.</div>";
     } else {
-        // Insert the post with the user-provided created_at timestamp
-        $stmt = $conn->prepare("INSERT INTO posts (title, content, created_at) VALUES (?, ?, ?)");
-        $stmt->bind_param("sss", $title, $content, $created_at);
+        // Insert the post with the user ID and user-provided created_at timestamp
+        $stmt = $conn->prepare("INSERT INTO posts (title, content, created_at, user_id) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("sssi", $title, $content, $created_at, $user_id);
 
         if ($stmt->execute()) {
             echo "<div class='alert alert-success'>New post created successfully!</div>";
