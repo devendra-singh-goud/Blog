@@ -1,0 +1,33 @@
+body {
+    color: white; /* Text color */
+}
+.sidebar {
+    background-color: #ff6600; /* Sidebar background */
+    min-height: 100vh; /* Full height */
+    padding: 20px;
+}
+.sidebar .nav-link {
+    color: #4d1f00; /* Link color */
+}
+.sidebar .nav-link:hover {
+    color: white; /* Hover effect */
+}
+.content {
+    padding: 20px; /* Content padding */
+    color: black;
+}
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: auto;
+}
+.card-header{
+    background-color: #ff6600;
+}
+.aa {
+    background-color:  #ff6600;
+}
+
+.nav-link{
+    color: #4d1f00; /* Link color */
+}

@@ -37,11 +37,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 ?>
 
-<div class="container mt-5">
+<div class="container m-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header text-center bg-success text-white">
+                <div class="card-header text-center  text-white">
                     <h2>Register</h2>
                 </div>
                 <div class="card-body">
@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <label for="confirm_password">Confirm Password:</label>
                             <input type="password" name="confirm_password" id="confirm_password" class="form-control" required>
                         </div>
-                        <button type="submit" class="btn btn-success btn-block">Register</button>
+                        <button type="submit" class="btn btn-outline-danger btn-block">Register</button>
                     </form>
                 </div>
                 <div class="card-footer text-center">

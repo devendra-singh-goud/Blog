@@ -16,7 +16,7 @@ $username = $_SESSION['username'];
 $search = isset($_GET['search']) ? $conn->real_escape_string($_GET['search']) : '';
 
 // Set the number of posts per page
-$postsPerPage = 5;
+$postsPerPage = 6;
 
 // Get the current page number from the query string, default to 1
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
@@ -58,7 +58,7 @@ if (!$result) {
             <div class="input-group">
                 <input type="text" name="search" class="form-control" placeholder="Search posts by title or content..." value="<?php echo htmlspecialchars($search); ?>">
                 <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="submit">Search</button>
+                    <button class="btn btn-outline-success" type="submit">Search</button>
                 </div>
             </div>
         </form>
@@ -93,9 +93,9 @@ if (!$result) {
                                 <?php endif; ?>
 
                                 <p class="card-text"><small class="text-muted">Created at: <?php echo htmlspecialchars($row['created_at']); ?></small></p>
-                                <a href="edit.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                                <a href="delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm">Delete</a>
-                                <a href="view.php?id=<?php echo $row['id']; ?>" class="btn btn-info btn-sm">View</a>
+                                <a href="edit.php?id=<?php echo $row['id']; ?>" class="btn btn-outline-warning btn-sm">Edit</a>
+                                <a href="delete.php?id=<?php echo $row['id']; ?>" class="btn btn-outline-danger btn-sm">Delete</a>
+                                <a href="view.php?id=<?php echo $row['id']; ?>" class="btn btn-outline-info btn-sm">View</a>
                             </div>
                         </div>
                     </div>
