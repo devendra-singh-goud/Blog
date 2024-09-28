@@ -11,7 +11,6 @@
     <div class="d-flex">
         <!-- Sidebar -->
         <nav class="sidebar flex-shrink-0">
-            <!-- <a href="#" class="navbar-brand mt-4">Blog</a> -->
             <a class="nav-link navbar-brand mt-4" href="index.php">Blog</a>
             <ul class="nav flex-column">
                 <?php if (isset($_SESSION['username'])): ?>
@@ -21,8 +20,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="logout.php">Logout</a>
                     </li>
+                    <!-- Profile Picture Link -->
                     <li class="nav-item">
-                        <span class="text-muted badge  ">Logged in as: <strong class="text-white  font-italic"><?php echo htmlspecialchars($_SESSION['username']); ?></strong></span>
+                        <a class="nav-link" href="profile.php">
+                            <?php if (!empty($_SESSION['profile_picture'])): ?>
+                                <img src="uploads/profile_pictures/<?php echo htmlspecialchars($_SESSION['profile_picture']); ?>" alt="Profile Picture" class="rounded-circle" width="40" height="40">
+                            <?php else: ?>
+                                <img src="uploads/profile_pictures/qq.jpg" alt="Default Profile Picture" class="rounded-circle" width="40" height="40">
+                            <?php endif; ?>
+                        </a>
                     </li>
                 <?php else: ?>
                     <li class="nav-item">
@@ -36,3 +42,5 @@
 
         <!-- Main Content -->
         <div class="content flex-grow-1">
+            <!-- Your main content here -->
+      

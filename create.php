@@ -12,7 +12,6 @@ if (!isset($_SESSION['username'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = $_POST['title'];
     $content = $_POST['content'];
-    $created_at = $_POST['created_at'];
     $user_id = $_SESSION['user_id']; // Get the logged-in user's ID
 
     // Server-side validation for minimum 6 words in content
@@ -21,7 +20,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($word_count < 6) {
         echo "<div class='alert alert-danger'>Error: Content must contain at least 6 words.</div>";
     } else {
-        // Insert the post with the user ID and user-provided created_at timestamp
+        // Automatically set the current timestamp for created_at
+        $created_at = date('Y-m-d H:i:s'); // MySQL DATETIME format
+
+        // Insert the post with the user ID and the automatically generated created_at timestamp
         $stmt = $conn->prepare("INSERT INTO posts (title, content, created_at, user_id) VALUES (?, ?, ?, ?)");
         $stmt->bind_param("sssi", $title, $content, $created_at, $user_id);
 
@@ -52,10 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <textarea name="content" id="content" class="form-control" required></textarea>
                     <div id="content-error" style="color: red;"></div>
                 </div>
-                <div class="mb-3">
-                    <label for="created_at" class="form-label">Created At:</label>
-                    <input type="datetime-local" name="created_at" id="created_at" class="form-control" required>
-                </div>
+                <!-- Removed Created At field -->
                 <button type="submit" class="btn btn-outline-primary">Submit</button>
             </form>
             <a href="index.php" class="btn btn-link mt-3">View Posts</a>
