@@ -7,8 +7,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = isset($_POST['username']) ? $conn->real_escape_string($_POST['username']) : '';
     $password = isset($_POST['password']) ? $_POST['password'] : '';
 
-    // Query to fetch user data
-    $sql = "SELECT id, username, password FROM users WHERE username = '$username'";
+    // Query to fetch user data including email and profile picture
+    $sql = "SELECT id, username, email, password, profile_picture FROM users WHERE username = '$username'";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -19,6 +19,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Set session variables
             $_SESSION['username'] = $user['username'];
             $_SESSION['user_id'] = $user['id'];
+            $_SESSION['email'] = $user['email']; // Store email in session
+            $_SESSION['profile_picture'] = $user['profile_picture']; // Store profile picture in session
 
             // Redirect to the index page
             header('Location: index.php');

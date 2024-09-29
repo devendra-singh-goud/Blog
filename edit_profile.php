@@ -11,9 +11,10 @@ if (!isset($_SESSION['username'])) {
 // Mock user data for demonstration (In a real application, retrieve these from the database)
 $userData = [
     'username' => $_SESSION['username'],
-    'email' => $_SESSION['email'],
+    'email' => isset($_SESSION['email']) ? $_SESSION['email'] : '', // Provide a default value if email is not set
     'profile_picture' => !empty($_SESSION['profile_picture']) ? $_SESSION['profile_picture'] : 'default.jpg'
 ];
+
 
 // Handling form submission for profile update
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -48,42 +49,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>Edit Profile</h3>
-                    </div>
-                    <div class="card-body">
-                        <form action="edit_profile.php" method="POST" enctype="multipart/form-data">
-                            <!-- Username Field -->
-                            <div class="form-group">
-                                <label for="username">Username</label>
-                                <input type="text" class="form-control" id="username" name="username" value="<?php echo htmlspecialchars($userData['username']); ?>" required>
-                            </div>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Edit Profile</h3>
+                </div>
+                <div class="card-body">
+                    <form action="edit_profile.php" method="POST" enctype="multipart/form-data">
+                        <!-- Username Field -->
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="username" name="username" value="<?php echo htmlspecialchars($userData['username']); ?>" required>
+                        </div>
 
-                            <!-- Email Field -->
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" value="<?php echo htmlspecialchars($userData['email']); ?>" required>
-                            </div>
+                        <!-- Email Field -->
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" value="<?php echo htmlspecialchars($userData['email']); ?>" required>
+                        </div>
 
-                            <!-- Profile Picture Upload -->
-                            <div class="form-group">
-                                <label for="profile_picture">Profile Picture</label><br>
-                                <img src="uploads/profile_pictures/<?php echo htmlspecialchars($userData['profile_picture']); ?>" class="rounded-circle mb-3" width="100" height="100" alt="Profile Picture">
-                                <input type="file" class="form-control-file" id="profile_picture" name="profile_picture">
-                            </div>
+                        <!-- Profile Picture Upload -->
+                        <div class="form-group">
+                            <label for="profile_picture">Profile Picture</label><br>
+                            <img src="uploads/profile_pictures/<?php echo htmlspecialchars($userData['profile_picture']); ?>" class="rounded-circle mb-3" width="100" height="100" alt="Profile Picture">
+                            <input type="file" class="form-control-file" id="profile_picture" name="profile_picture">
+                        </div>
 
-                            <!-- Submit Button -->
-                            <button type="submit" class="btn btn-outline-primary">Save Changes</button>
-                            <a href="profile.php" class="btn btn-outline-secondary">Cancel</a>
-                        </form>
-                    </div>
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-outline-primary">Save Changes</button>
+                        <a href="profile.php" class="btn btn-outline-secondary">Cancel</a>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <?php include('footer.php'); ?>
+<?php include('footer.php'); ?>

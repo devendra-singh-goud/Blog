@@ -18,7 +18,7 @@
                         <a class="nav-link" href="create.php">Add New Post</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="logout.php">Logout</a>
+                        <!-- <a class="nav-link" href="logout.php">Logout</a> -->
                     </li>
                     <!-- Profile Picture Link -->
                     <li class="nav-item">
